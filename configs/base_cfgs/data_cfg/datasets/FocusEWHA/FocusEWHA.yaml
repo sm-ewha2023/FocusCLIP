@@ -1,0 +1,15 @@
+data_cfg:
+  train_images_root: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1
+  val_images_root: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1
+  test_images_root: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1
+  train_data_file: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1/data_list/Our_sample3_D1D5_train_database.txt
+  val_data_file: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1/data_list/Our_sample3_D1D5_val_database.txt
+  test_data_file: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1/data_list/Our_sample3_D1D5_val_database.txt
+runner_cfg:
+  seed: 27
+  model_cfg:
+    prompt_learner_cfg:
+      num_ranks: 10
+      num_context_tokens: 10
+      rank_tokens_position: tail
+      stain_tokens_position: tail

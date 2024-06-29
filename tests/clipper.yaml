@@ -1,0 +1,13 @@
+prompt_learner_cfg:
+  type: RankPromptLearner
+  num_ranks: 10
+  num_base_ranks: 5
+  num_tokens_per_rank: 2
+  num_context_tokens: 5
+  rank_tokens_position: tail
+  init_rank_path: null
+  init_context: null
+  rank_specific_context: false
+  interpolation_type: linear
+text_encoder_name: RN50
+image_encoder_name: vgg16

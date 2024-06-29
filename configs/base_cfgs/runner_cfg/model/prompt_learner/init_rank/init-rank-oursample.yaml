@@ -1,0 +1,4 @@
+runner_cfg:
+  model_cfg:
+    prompt_learner_cfg:
+      init_rank_path: /mnt/8TB/cvlab/DATA/Our_sample_merged_BBBC06_ver2/classnames.txt

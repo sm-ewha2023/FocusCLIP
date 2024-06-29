@@ -1,0 +1,60 @@
+--- ./CLIP/clip/model.py	2024-06-29 14:54:15.129280995 +0900
++++ focusclip/models/clip/model.py	2024-06-29 14:44:53.168977169 +0900
+@@ -6,7 +6,6 @@
+ import torch.nn.functional as F
+ from torch import nn
+ 
+-
+ class Bottleneck(nn.Module):
+     expansion = 4
+ 
+@@ -66,7 +65,7 @@
+         self.num_heads = num_heads
+ 
+     def forward(self, x):
+-        x = x.flatten(start_dim=2).permute(2, 0, 1)  # NCHW -> (HW)NC
++        # x = x.flatten(start_dim=2).permute(2, 0, 1)  # NCHW -> (HW)NC
+         x = torch.cat([x.mean(dim=0, keepdim=True), x], dim=0)  # (HW+1)NC
+         x = x + self.positional_embedding[:, None, :].to(x.dtype)  # (HW+1)NC
+         x, _ = F.multi_head_attention_forward(
+@@ -90,7 +89,6 @@
+         )
+         return x.squeeze(0)
+ 
+-
+ class ModifiedResNet(nn.Module):
+     """
+     A ResNet class that is similar to torchvision's but contains the following changes:
+@@ -103,6 +101,7 @@
+         super().__init__()
+         self.output_dim = output_dim
+         self.input_resolution = input_resolution
++        self.heads = heads
+ 
+         # the 3-layer stem
+         self.conv1 = nn.Conv2d(3, width // 2, kernel_size=3, stride=2, padding=1, bias=False)
+@@ -149,9 +148,12 @@
+         x = self.layer2(x)
+         x = self.layer3(x)
+         x = self.layer4(x)
+-        x = self.attnpool(x)
++        x = x.flatten(start_dim=2).permute(2, 0, 1)
++        attnx = self.attnpool(x)
++
++        return x, attnx
++
+ 
+-        return x
+ 
+ 
+ class LayerNorm(nn.LayerNorm):
+@@ -432,5 +434,6 @@
+             del state_dict[key]
+ 
+     convert_weights(model)
+-    model.load_state_dict(state_dict)
+-    return model.eval()
+\ No newline at end of file
++    model.load_state_dict(state_dict, strict=False)
++
++    return model.eval()
