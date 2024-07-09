@@ -211,10 +211,8 @@ if __name__ == "__main__":
         nargs=argparse.REMAINDER,
         help="modify config options using the command-line",
     )
-    ####
     parser.add_argument("--ckpt_path", type=str, default=None,
         help="Set the path of ckpt file")
-    ####
     args = parser.parse_args()
     cfg = parse_cfg(args, instantialize_output_dir=True)
 
