@@ -6,7 +6,6 @@ data_cfg:
   val_data_file: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1/data_list/Our_sample3_D1D5_val_database.txt
   test_data_file: /mnt/8TB/cvlab/DATA/Our_Sample_DATA/Our_sample3_labeled/ver3_d1d5/2um/Our_sample3_D1D5_merged_BBBC06_stain_ver1/data_list/Our_sample3_D1D5_val_database.txt
 runner_cfg:
-  seed: 27
   model_cfg:
     prompt_learner_cfg:
       num_ranks: 10
