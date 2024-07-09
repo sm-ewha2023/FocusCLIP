@@ -9,3 +9,5 @@ runner_cfg:
   model_cfg:
     prompt_learner_cfg:
       num_ranks: 12
+      rank_tokens_position: tail
+      stain_tokens_position: tail
