@@ -9,6 +9,6 @@ runner_cfg:
   model_cfg:
     prompt_learner_cfg:
       num_ranks: 10
-      num_context_tokens: 20
-      rank_tokens_position: middle
+      num_context_tokens: 10
+      rank_tokens_position: tail
       stain_tokens_position: tail
