@@ -71,7 +71,7 @@ class RegressionDataset(Dataset):
             for line in fin:
                 splits = line.split()
                 image_file = splits[0]
-                labels = splits[1]
+                labels = [splits[1]]
                 stains = splits[2]
 
                 self.labels.append([int(label) for label in labels])
